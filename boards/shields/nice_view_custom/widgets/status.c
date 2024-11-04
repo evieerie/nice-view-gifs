@@ -176,8 +176,8 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 #endif
 
 static void set_bongo_cat(struct zmk_widget_status *widget, struct keycode_status_state state) {
-    if (state.state) lv_img_set_src(widget->art, bongo[0])
-    else lv_img_set_src(widget->art, bongo[1])
+    if (state.state) lv_img_set_src(widget->art, bongo[0]);
+    else lv_img_set_src(widget->art, bongo[1]);
 }
 
 static void keycode_status_update_cb(struct keycode_status_state state) {
