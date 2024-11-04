@@ -26,66 +26,14 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
 
-LV_IMG_DECLARE(mai_0)
-LV_IMG_DECLARE(mai_1)
-LV_IMG_DECLARE(mai_2)
-LV_IMG_DECLARE(mai_3)
-LV_IMG_DECLARE(mai_4)
-LV_IMG_DECLARE(mai_5)
-LV_IMG_DECLARE(mai_6)
-LV_IMG_DECLARE(mai_7)
-LV_IMG_DECLARE(mai_8)
-LV_IMG_DECLARE(mai_9)
-LV_IMG_DECLARE(mai_10)
-LV_IMG_DECLARE(mai_11)
-LV_IMG_DECLARE(mai_12)
-LV_IMG_DECLARE(mai_13)
-LV_IMG_DECLARE(mai_14)
-LV_IMG_DECLARE(mai_15)
-LV_IMG_DECLARE(mai_16)
-LV_IMG_DECLARE(mai_17)
-LV_IMG_DECLARE(mai_18)
-LV_IMG_DECLARE(mai_19)
-LV_IMG_DECLARE(mai_20)
-LV_IMG_DECLARE(mai_21)
-LV_IMG_DECLARE(mai_22)
-LV_IMG_DECLARE(mai_23)
-LV_IMG_DECLARE(mai_24)
-LV_IMG_DECLARE(mai_25)
-LV_IMG_DECLARE(mai_26)
-LV_IMG_DECLARE(mai_27)
-LV_IMG_DECLARE(mai_28)
+LV_IMG_DECLARE(bongo_0)
+LV_IMG_DECLARE(bongo_1)
+LV_IMG_DECLARE(bongo_2)
 
-const lv_img_dsc_t *anim_imgs[] = {
-    &mai_0,
-    &mai_1,
-    &mai_2,
-    &mai_3,
-    &mai_4,
-    &mai_5,
-    &mai_6,
-    &mai_7,
-    &mai_8,
-    &mai_9,
-    &mai_10,
-    &mai_11,
-    &mai_12,
-    &mai_13,
-    &mai_14,
-    &mai_15,
-    &mai_16,
-    &mai_17,
-    &mai_18,
-    &mai_19,
-    &mai_20,
-    &mai_21,
-    &mai_22,
-    &mai_23,
-    &mai_24,
-    &mai_25,
-    &mai_26,
-    &mai_27,
-    &mai_28,
+const lv_img_dsc_t *bongo[] = {
+    &bongo_0,
+    &bongo_1,
+    &bongo_2,
 };
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
@@ -229,12 +177,8 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
     lv_obj_align(top, LV_ALIGN_TOP_RIGHT, 0, 0);
     lv_canvas_set_buffer(top, widget->cbuf, CANVAS_SIZE, CANVAS_SIZE, LV_IMG_CF_TRUE_COLOR);
 
-    lv_obj_t * art = lv_animimg_create(widget->obj);            //<--
-    lv_obj_center(art);                                         //<--
-    lv_animimg_set_src(art, (const void **) anim_imgs, 29);     //<--
-    lv_animimg_set_duration(art, 1000);                         //<--
-    lv_animimg_set_repeat_count(art, LV_ANIM_REPEAT_INFINITE);  //<--
-    lv_animimg_start(art);                                      //<--
+    lv_obj_t *art = lv_img_create(widget->obj);
+    lv_img_set_src(art, bongo[0]) //new line
     lv_obj_align(art, LV_ALIGN_TOP_LEFT, 0, 0);
 
     sys_slist_append(&widgets, &widget->node);
