@@ -20,6 +20,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/events/endpoint_changed.h>
 #include <zmk/events/wpm_state_changed.h>
 #include <zmk/events/layer_state_changed.h>
+#include <zmk/events/keycode_state_changed.h>
 #include <zmk/usb.h>
 #include <zmk/ble.h>
 #include <zmk/endpoints.h>
@@ -52,6 +53,10 @@ struct layer_status_state {
 
 struct wpm_status_state {
     uint8_t wpm;
+};
+
+struct keycode_status_state {
+    bool state;
 };
 
 static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
@@ -170,6 +175,28 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_usb_conn_state_changed);
 ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 #endif
 
+static void set_bongo_cat(struct zmk_widget_status *widget, struct keycode_status_state state) {
+    if (state.state) lv_img_set_src(widget->art, bongo[0])
+    else lv_img_set_src(widget->art, bongo[1])
+}
+
+static void keycode_status_update_cb(struct keycode_status_state state) {
+    struct zmk_widget_status *widget;
+    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_bongo_cat(widget, state); }
+}
+
+static struct battery_status_state keycode_status_get_state(const zmk_event_t *eh) {
+    const struct zmk_keycode_state_changed *ev = as_zmk_keycode_state_changed(eh);
+
+    return (struct keycode_status_state) {
+        .state = (ev != NULL) ? ev->state : NULL,
+    };
+}
+
+ZMK_DISPLAY_WIDGET_LISTENER(widget_bongo_cat, struct keycode_status_state, keycode_status_update_cb,
+                            keycode_status_get_state)
+ZMK_SUBSCRIPTION(widget_bongo_cat, zmk_keycode_state_changed);
+
 int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
     widget->obj = lv_obj_create(parent);
     lv_obj_set_size(widget->obj, 160, 68);
@@ -177,9 +204,9 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
     lv_obj_align(top, LV_ALIGN_TOP_RIGHT, 0, 0);
     lv_canvas_set_buffer(top, widget->cbuf, CANVAS_SIZE, CANVAS_SIZE, LV_IMG_CF_TRUE_COLOR);
 
-    lv_obj_t *art = lv_img_create(widget->obj);
-    lv_img_set_src(art, bongo[0]); //new line
-    lv_obj_align(art, LV_ALIGN_TOP_LEFT, 0, 0);
+    widget->art = lv_img_create(widget->obj);
+    lv_img_set_src(widget->art, bongo[0]);
+    lv_obj_align(widget->art, LV_ALIGN_TOP_LEFT, 0, 0);
 
     sys_slist_append(&widgets, &widget->node);
     widget_battery_status_init();
