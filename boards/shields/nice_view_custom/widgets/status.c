@@ -185,7 +185,7 @@ static void keycode_status_update_cb(struct keycode_status_state state) {
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_bongo_cat(widget, state); }
 }
 
-static struct battery_status_state keycode_status_get_state(const zmk_event_t *eh) {
+static struct keycode_status_state keycode_status_get_state(const zmk_event_t *eh) {
     const struct zmk_keycode_state_changed *ev = as_zmk_keycode_state_changed(eh);
 
     return (struct keycode_status_state) {
