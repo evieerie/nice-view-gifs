@@ -26,35 +26,60 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
 
-LV_IMG_DECLARE(mai_0)
-LV_IMG_DECLARE(mai_1)
-LV_IMG_DECLARE(mai_2)
-LV_IMG_DECLARE(mai_3)
-LV_IMG_DECLARE(mai_4)
-LV_IMG_DECLARE(mai_5)
-LV_IMG_DECLARE(mai_6)
-LV_IMG_DECLARE(mai_7)
-LV_IMG_DECLARE(mai_8)
-LV_IMG_DECLARE(mai_9)
-LV_IMG_DECLARE(mai_10)
-LV_IMG_DECLARE(mai_11)
-LV_IMG_DECLARE(mai_12)
-LV_IMG_DECLARE(mai_13)
-LV_IMG_DECLARE(mai_14)
-LV_IMG_DECLARE(mai_15)
-LV_IMG_DECLARE(mai_16)
-LV_IMG_DECLARE(mai_17)
-LV_IMG_DECLARE(mai_18)
-LV_IMG_DECLARE(mai_19)
-LV_IMG_DECLARE(mai_20)
-LV_IMG_DECLARE(mai_21)
-LV_IMG_DECLARE(mai_22)
-LV_IMG_DECLARE(mai_23)
-LV_IMG_DECLARE(mai_24)
-LV_IMG_DECLARE(mai_25)
-LV_IMG_DECLARE(mai_26)
-LV_IMG_DECLARE(mai_27)
-LV_IMG_DECLARE(mai_28)
+LV_IMG_DECLARE(mai_0);
+LV_IMG_DECLARE(mai_1);
+LV_IMG_DECLARE(mai_2);
+LV_IMG_DECLARE(mai_3);
+LV_IMG_DECLARE(mai_4);
+LV_IMG_DECLARE(mai_5);
+LV_IMG_DECLARE(mai_6);
+LV_IMG_DECLARE(mai_7);
+LV_IMG_DECLARE(mai_8);
+LV_IMG_DECLARE(mai_9);
+LV_IMG_DECLARE(mai_10);
+LV_IMG_DECLARE(mai_11);
+LV_IMG_DECLARE(mai_12);
+LV_IMG_DECLARE(mai_13);
+LV_IMG_DECLARE(mai_14);
+LV_IMG_DECLARE(mai_15);
+LV_IMG_DECLARE(mai_16);
+LV_IMG_DECLARE(mai_17);
+LV_IMG_DECLARE(mai_18);
+LV_IMG_DECLARE(mai_19);
+LV_IMG_DECLARE(mai_20);
+LV_IMG_DECLARE(mai_21);
+LV_IMG_DECLARE(mai_22);
+LV_IMG_DECLARE(mai_23);
+LV_IMG_DECLARE(mai_24);
+LV_IMG_DECLARE(mai_25);
+LV_IMG_DECLARE(mai_26);
+LV_IMG_DECLARE(mai_27);
+LV_IMG_DECLARE(mai_28);
+LV_IMG_DECLARE(mai_29);
+LV_IMG_DECLARE(mai_30);
+LV_IMG_DECLARE(mai_31);
+LV_IMG_DECLARE(mai_32);
+LV_IMG_DECLARE(mai_33);
+LV_IMG_DECLARE(mai_34);
+LV_IMG_DECLARE(mai_35);
+LV_IMG_DECLARE(mai_36);
+LV_IMG_DECLARE(mai_37);
+LV_IMG_DECLARE(mai_38);
+LV_IMG_DECLARE(mai_39);
+LV_IMG_DECLARE(mai_40);
+LV_IMG_DECLARE(mai_41);
+LV_IMG_DECLARE(mai_42);
+LV_IMG_DECLARE(mai_43);
+LV_IMG_DECLARE(mai_44);
+LV_IMG_DECLARE(mai_45);
+LV_IMG_DECLARE(mai_46);
+LV_IMG_DECLARE(mai_47);
+LV_IMG_DECLARE(mai_48);
+LV_IMG_DECLARE(mai_49);
+LV_IMG_DECLARE(mai_50);
+LV_IMG_DECLARE(mai_51);
+LV_IMG_DECLARE(mai_52);
+LV_IMG_DECLARE(mai_53);
 
 const lv_img_dsc_t *anim_imgs[] = {
     &mai_0,
@@ -86,7 +111,33 @@ const lv_img_dsc_t *anim_imgs[] = {
     &mai_26,
     &mai_27,
     &mai_28,
+    &mai_29,
+    &mai_30,
+    &mai_31,
+    &mai_32,
+    &mai_33,
+    &mai_34,
+    &mai_35,
+    &mai_36,
+    &mai_37,
+    &mai_38,
+    &mai_39,
+    &mai_40,
+    &mai_41,
+    &mai_42,
+    &mai_43,
+    &mai_44,
+    &mai_45,
+    &mai_46,
+    &mai_47,
+    &mai_48,
+    &mai_49,
+    &mai_50,
+    &mai_51,
+    &mai_52,
+    &mai_53,
 };
+
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
@@ -231,8 +282,8 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
 
     lv_obj_t * art = lv_animimg_create(widget->obj);            //<--
     lv_obj_center(art);                                         //<--
-    lv_animimg_set_src(art, (const void **) anim_imgs, 29);     //<--
-    lv_animimg_set_duration(art, 1000);                         //<--
+    lv_animimg_set_src(art, (const void **) anim_imgs, 53);     //<--
+    lv_animimg_set_duration(art, 10000);                         //<--
     lv_animimg_set_repeat_count(art, LV_ANIM_REPEAT_INFINITE);  //<--
     lv_animimg_start(art);                                      //<--
     lv_obj_align(art, LV_ALIGN_TOP_LEFT, 0, 0);
