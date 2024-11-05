@@ -31,7 +31,6 @@ LV_IMG_DECLARE(catgirl_1);
 LV_IMG_DECLARE(catgirl_2);
 LV_IMG_DECLARE(catgirl_3);
 LV_IMG_DECLARE(catgirl_4);
-LV_IMG_DECLARE(catgirl_5);
 
 const lv_img_dsc_t *anim_imgs[] = {
     &catgirl_0,
@@ -39,7 +38,6 @@ const lv_img_dsc_t *anim_imgs[] = {
     &catgirl_2,
     &catgirl_3,
     &catgirl_4,
-    &catgirl_5,
 };
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
