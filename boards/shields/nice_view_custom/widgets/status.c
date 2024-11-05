@@ -178,8 +178,8 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 static void set_bongo_cat(struct zmk_widget_status *widget, struct keycode_status_state state) {
     // pressed
     if (state.state) {
-        lv_img_set_src(widget->art, bongo[state.bongo+1]);
-        state.bongo = !state.bongo;
+        lv_img_set_src(widget->art, bongo[widget->state.bongo+1]);
+        widget->state.bongo = !widget->state.bongo;
     }
     // released
     else lv_img_set_src(widget->art, bongo[0]);
