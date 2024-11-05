@@ -30,10 +30,10 @@ void draw_battery(lv_obj_t *canvas, const struct status_state *state) {
     lv_draw_rect_dsc_t rect_white_dsc;
     init_rect_dsc(&rect_white_dsc, LVGL_FOREGROUND);
 
-    lv_canvas_draw_rect(canvas, 0, 2, 30, 10, &rect_white_dsc);
-    lv_canvas_draw_rect(canvas, 1, 3, 28, 8, &rect_black_dsc);
+    lv_canvas_draw_rect(canvas, 0, 2, 29, 8, &rect_white_dsc);
+    lv_canvas_draw_rect(canvas, 1, 3, 27, 6, &rect_black_dsc);
     lv_canvas_draw_rect(canvas, 2, 4, (state->battery + 2) / 4, 4, &rect_white_dsc);
-    lv_canvas_draw_rect(canvas, 30, 2, 1, 4, &rect_white_dsc);
+    lv_canvas_draw_rect(canvas, 29, 4, 2, 4, &rect_white_dsc);
 
     if (state->charging) {
         lv_draw_img_dsc_t img_dsc;
