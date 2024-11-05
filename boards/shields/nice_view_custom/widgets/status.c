@@ -150,11 +150,11 @@ static void set_peripheral_battery_status(struct zmk_widget_status *widget,
 
 static void peripheral_battery_status_update_cb(struct battery_status_state state) {
     struct zmk_widget_status *widget;
-    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_peripherial_battery_status(widget, state); }
+    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_peripheral_battery_status(widget, state); }
 }
 
 static struct battery_status_state peripheral_battery_status_get_state(const zmk_event_t *eh) {
-    const struct zmk_battery_state_changed *ev = as_zmk_peripheral_battery_state_changed(eh);
+    const struct zmk_peripheral_battery_state_changed *ev = as_zmk_peripheral_battery_state_changed(eh);
 
     return (struct battery_status_state) {
         .level = (ev != NULL) ? ev->state_of_charge : zmk_peripheral_battery_state_of_charge(),
@@ -162,7 +162,7 @@ static struct battery_status_state peripheral_battery_status_get_state(const zmk
 }
 
 ZMK_DISPLAY_WIDGET_LISTENER(widget_peripheral_battery_status, struct battery_status_state,
-                            peripheral_battery_status_update_cb, peripherald_battery_status_get_state)
+                            peripheral_battery_status_update_cb, peripheral_battery_status_get_state)
 
 ZMK_SUBSCRIPTION(widget_peripheral_battery_status, zmk_peripheral_battery_state_changed);
 
