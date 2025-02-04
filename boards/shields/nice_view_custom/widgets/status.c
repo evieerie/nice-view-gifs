@@ -47,7 +47,7 @@ struct output_status_state {
 };
 
 struct layer_status_state {
-    uint8_t index;
+    zmk_keymap_layer_index_t index;
     const char *label;
 };
 
