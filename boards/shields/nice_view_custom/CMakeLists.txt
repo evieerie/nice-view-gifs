@@ -6,5 +6,4 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_WIDGET_STATUS)
 
   zephyr_library_sources(widgets/art.c)
   zephyr_library_sources(widgets/status.c)
-  endif()
 endif()
